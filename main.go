@@ -59,3 +59,29 @@ type Account struct {
 	id int
 	balance float32
 }
+
+func (a *Account) String() string {
+	return fmt.Sprintf("Account [%d]: $%0.2f", a.id, a.balance)
+}
+
+func (a *Account) Deposit(amount float32) float32 {
+	a.balance += amount
+	return a.balance
+}
+
+func (a *Account) Withdraw(amount float32) float32 {
+	a.balance -= amount
+	return a.balance
+}
+
+func (a *Account) Balance() float32 {
+	return a.balance
+}
+
+type Circle struct {
+	radius float64
+}
+
+func (c Circle) Area() float64 {
+	return 3.14 * c.radius * c.radius
+}
