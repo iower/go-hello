@@ -84,6 +84,19 @@ func main() {
 	for key, value := range testmap {
 		fmt.Printf("%s: %d \n", key, value)
 	}
+
+	// looping
+
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+	fmt.Println("sum", sum)
+
+	for i := 0; i < 100; i++ {
+		fmt.Println(FizzBuzz(i))
+	}
 }
 
 func isEven(n int) (bool, error) {
@@ -132,4 +145,31 @@ type Circle struct {
 
 func (c Circle) Area() float64 {
 	return 3.14 * c.radius * c.radius
+}
+
+
+// flow control
+
+func Guess(n int) string {
+	N := 42
+	if n == N {
+		return "You got it!"
+	} else if n < N {
+		return "Too low1"
+	} else {
+		return "Too high!"
+	}
+}
+
+func FizzBuzz(n int) string {
+	switch true {
+	case n % 15 == 0:
+		return "FizzBuzz"
+	case n % 3 == 0:
+		return "Fizz"
+	case n % 5 == 0:
+		return "Buzz"
+	default:
+		return fmt.Sprintf("%d", n)
+	}
 }
