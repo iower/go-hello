@@ -122,6 +122,10 @@ func main() {
 			fmt.Println("File size", fs.Size())
 		}
 	}
+
+	// files
+
+	AppendFile("testfile", "testcontent")
 }
 
 func isEven(n int) (bool, error) {
@@ -209,4 +213,21 @@ func Goodbye(name string) {
 func Hello(name string) {
 	defer Goodbye(name)
 	fmt.Printf("Hello, %s\n", name)
+}
+
+
+// error handling
+
+func AppendFile(fn, text string) error {
+	f, err := os.OpenFile(fn, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		return fmt.Errorf("Error opening file for writing: %w", err)
+	}
+	defer f.Close()
+
+	if _, err := f.Write([]byte(text)); err != nil {
+		return fmt.Errorf("Error writing text to file: %w", err)
+	}
+
+	return nil
 }
