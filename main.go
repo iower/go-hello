@@ -103,8 +103,25 @@ func main() {
 
 
 	// os
+
 	user := os.Getenv("USER")
 	Hello(user)
+
+
+	// error handling
+
+	path := "no/such/file"
+	f, err := os.Open(path)
+	if err != nil {
+		fmt.Println("No such file", path, err)
+	} else {
+		fs, err := f.Stat()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println("File size", fs.Size())
+		}
+	}
 }
 
 func isEven(n int) (bool, error) {
