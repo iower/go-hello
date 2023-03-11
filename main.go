@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"os"
+	"fmt"
+)
 
 func main() {
 	// simple output
@@ -97,6 +100,11 @@ func main() {
 	for i := 0; i < 100; i++ {
 		fmt.Println(FizzBuzz(i))
 	}
+
+
+	// os
+	user := os.Getenv("USER")
+	Hello(user)
 }
 
 func isEven(n int) (bool, error) {
@@ -172,4 +180,16 @@ func FizzBuzz(n int) string {
 	default:
 		return fmt.Sprintf("%d", n)
 	}
+}
+
+
+// deferring
+
+func Goodbye(name string) {
+	fmt.Printf("Goodbye, %s\n", name)
+}
+
+func Hello(name string) {
+	defer Goodbye(name)
+	fmt.Printf("Hello, %s\n", name)
 }
