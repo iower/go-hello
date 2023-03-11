@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"fmt"
+	"github.com/iower/goshapes"
 )
 
 func main() {
@@ -123,9 +124,16 @@ func main() {
 		}
 	}
 
+
 	// files
 
 	AppendFile("testfile", "testcontent")
+
+
+	// packages
+
+	c := goshapes.Circle{Radius: 5}
+	fmt.Printf("Area of %s: %0.2f\n", c, c.Area())
 }
 
 func isEven(n int) (bool, error) {
