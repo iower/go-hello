@@ -134,6 +134,10 @@ func main() {
 
 	c := goshapes.Circle{Radius: 5}
 	fmt.Printf("Area of %s: %0.2f\n", c, c.Area())
+
+
+	// multiple
+	fmt.Println(multiple(2, 3))
 }
 
 func isEven(n int) (bool, error) {
@@ -238,4 +242,13 @@ func AppendFile(fn, text string) error {
 	}
 
 	return nil
+}
+
+
+/* multiline comment
+and multiple return
+*/
+
+func multiple(x, y int) (sum, prod int) {
+	return x + y, x * y
 }
