@@ -138,6 +138,54 @@ func main() {
 
 	// multiple
 	fmt.Println(multiple(2, 3))
+
+
+	// arrays
+	fmt.Println("Arrays")
+
+	var arr [4]int
+	for i, value := range arr {
+		fmt.Println(i, value)
+	}
+
+	arr2 := [...]int{1, 2, 3, 4, 5}
+	for i, value := range arr2 {
+		fmt.Println(i, value)
+	}
+
+	// arrays have value semantics
+	arr3 := arr2
+	arr3[0] = -1
+	arr3[4] = -5
+	for i, value := range arr2 {
+		fmt.Println(i, value)
+	}
+	for i, value := range arr3 {
+		fmt.Println(i, value)
+	}
+
+	// slices
+	sl1 := []int{1, 2, 3}
+	sl2 := make([]int, 4)
+	var sl3 [][]int32
+	sl4 := []byte("slice")
+
+	fmt.Println("Slice 1:")
+	for i, value := range sl1 {
+		fmt.Println(i, value)
+	}
+	fmt.Println("Slice 2:")
+	for i, value := range sl2 {
+		fmt.Println(i, value)
+	}
+	fmt.Println("Slice 3:")
+	for i, value := range sl3 {
+		fmt.Println(i, value)
+	}
+	fmt.Println("Slice 4:")
+	for i, value := range sl4 {
+		fmt.Println(i, value)
+	}
 }
 
 func isEven(n int) (bool, error) {
