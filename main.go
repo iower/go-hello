@@ -186,6 +186,20 @@ func main() {
 	for i, value := range sl4 {
 		fmt.Println(i, value)
 	}
+
+	sl5 := []int{1, 2, 3}
+	sl6 := sl5
+	sl6[0] = 0
+	fmt.Println("slices have reference semantics:", sl5[0] == sl6[0])
+
+	sl5 = append(sl5, 4, 5, 6)
+	fmt.Println("sl5*", sl5)
+
+	sl5 = append(sl5, []int{7, 8, 9}...)
+	fmt.Println("sl5**", sl5)
+
+	sl5 = append(sl5, sl5...)
+	fmt.Println("sl5***")
 }
 
 func isEven(n int) (bool, error) {
