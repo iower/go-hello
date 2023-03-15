@@ -200,6 +200,12 @@ func main() {
 
 	sl5 = append(sl5, sl5...)
 	fmt.Println("sl5***")
+
+
+	// pointers
+	p, q := learnMemory()
+	fmt.Println("p", p, *p)
+	fmt.Println("q", q, *q)
 }
 
 func isEven(n int) (bool, error) {
@@ -313,4 +319,15 @@ and multiple return
 
 func multiple(x, y int) (sum, prod int) {
 	return x + y, x * y
+}
+
+
+// pointers
+
+func learnMemory() (p, q *int) {
+	// p = new(int)
+	s := make([]int, 20)
+	s[3] = 7
+	r := -2
+	return &s[3], &r
 }
