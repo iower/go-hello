@@ -230,6 +230,14 @@ func main() {
 	default:
 		fmt.Println("unknown")
 	}
+
+
+	// more for
+	xx := 42
+	for xx := 0; xx < 4; xx++ {
+		fmt.Println("iteration", xx)
+	}
+	fmt.Println("outer xx", xx)
 }
 
 func isEven(n int) (bool, error) {
