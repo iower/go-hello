@@ -206,6 +206,30 @@ func main() {
 	p, q := learnMemory()
 	fmt.Println("p", p, *p)
 	fmt.Println("q", q, *q)
+
+
+	// maps
+
+	m := map[string]int{
+		"three": 3,
+		"four": 4,
+	}
+	m["one"] = 1
+	fmt.Println("Map", m)
+
+
+	// switching on the type
+
+	var data interface{}
+	data = 12
+	switch c := data.(type) {
+	case string:
+		fmt.Println(c, "is a string")
+	case int:
+		fmt.Println(c, "is an int64")
+	default:
+		fmt.Println("unknown")
+	}
 }
 
 func isEven(n int) (bool, error) {
@@ -330,4 +354,12 @@ func learnMemory() (p, q *int) {
 	s[3] = 7
 	r := -2
 	return &s[3], &r
+}
+
+
+// named return
+
+func learnNamedReturn(x, y int) (z int) {
+	z = x * y
+	return
 }
