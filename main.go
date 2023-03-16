@@ -102,6 +102,10 @@ func main() {
 		fmt.Println(FizzBuzz(i))
 	}
 
+	for {
+		break
+		continue
+	}
 
 	// os
 
@@ -216,6 +220,11 @@ func main() {
 	}
 	m["one"] = 1
 	fmt.Println("Map", m)
+
+	fmt.Println("Range map")
+	for key, value := range m {
+		fmt.Printf("key=%s, value=%d\n", key, value)
+	}
 
 
 	// switching on the type
