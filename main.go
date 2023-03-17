@@ -247,6 +247,16 @@ func main() {
 		fmt.Println("iteration", xx)
 	}
 	fmt.Println("outer xx", xx)
+
+
+	// clojures
+	clojure := 9001
+	isBig := func() bool {
+		return clojure > 9000
+	}
+	fmt.Println("isBig", isBig())
+	clojure = 1
+	fmt.Println("isBig", isBig())
 }
 
 func isEven(n int) (bool, error) {
