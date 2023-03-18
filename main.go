@@ -272,6 +272,13 @@ trygoto:
 		func(a, b int) int {
 			return (a + b) * 2
 		}(10, 2))
+
+	// function factory
+	fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
+
+	factory := sentenceFactory("summer")
+	fmt.Println(factory("A beautiful", "day!"))
+	fmt.Println(factory("A lazy", "afternoon!"))
 }
 
 func isEven(n int) (bool, error) {
@@ -404,4 +411,13 @@ func learnMemory() (p, q *int) {
 func learnNamedReturn(x, y int) (z int) {
 	z = x * y
 	return
+}
+
+
+// function factory
+
+func sentenceFactory(mystring string) func(before, after string) string {
+	return func (before, after string) string {
+		return fmt.Sprintf("%s %s %s", before, mystring, after)
+	}
 }
