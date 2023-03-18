@@ -257,6 +257,21 @@ func main() {
 	fmt.Println("isBig", isBig())
 	clojure = 1
 	fmt.Println("isBig", isBig())
+
+
+	// goto
+	fmt.Println("try goto")
+	goto trygoto
+	fmt.Println("hidden")
+trygoto:
+	fmt.Println("goto is ok")
+
+
+	// define&call
+	fmt.Println("Add + double numbers:",
+		func(a, b int) int {
+			return (a + b) * 2
+		}(10, 2))
 }
 
 func isEven(n int) (bool, error) {
