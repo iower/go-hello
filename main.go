@@ -290,6 +290,14 @@ trygoto:
 	type Stringer interface {
 		String() string
 	}
+
+	myPair := pair{3, 4}
+	fmt.Println("struct", myPair.String())
+
+	var myStringer Stringer
+	myStringer = myPair
+
+	fmt.Println("implemented interface", myStringer.String())
 }
 
 func isEven(n int) (bool, error) {
@@ -308,6 +316,9 @@ func addN(n int) func(x int) int {
 		return x + n
 	}
 }
+
+
+// structs
 
 type Account struct {
 	id int
@@ -338,6 +349,15 @@ type Circle struct {
 
 func (c Circle) Area() float64 {
 	return 3.14 * c.radius * c.radius
+}
+
+type pair struct {
+	x, y int
+}
+
+// define a method on type
+func (p pair) String() string {
+	return fmt.Sprintf("(%d, %d)", p.x, p.y)
 }
 
 
