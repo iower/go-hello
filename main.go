@@ -273,12 +273,23 @@ trygoto:
 			return (a + b) * 2
 		}(10, 2))
 
+
 	// function factory
 	fmt.Println(sentenceFactory("summer")("A beautiful", "day!"))
 
 	factory := sentenceFactory("summer")
 	fmt.Println(factory("A beautiful", "day!"))
 	fmt.Println(factory("A lazy", "afternoon!"))
+
+
+	// deferring
+	learnDefer()
+
+
+	// interfaces
+	type Stringer interface {
+		String() string
+	}
 }
 
 func isEven(n int) (bool, error) {
@@ -366,6 +377,12 @@ func Goodbye(name string) {
 func Hello(name string) {
 	defer Goodbye(name)
 	fmt.Printf("Hello, %s\n", name)
+}
+
+func learnDefer() (ok bool) {
+	defer fmt.Println("Defer 1")
+	defer fmt.Println("Defer 2 (LIFO)")
+	return true
 }
 
 
