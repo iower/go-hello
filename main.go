@@ -298,6 +298,10 @@ trygoto:
 	myStringer = myPair
 
 	fmt.Println("implemented interface", myStringer.String())
+
+
+	// variadic params
+	learnVariadicParams("string1", "string2", "string3", "string4")
 }
 
 func isEven(n int) (bool, error) {
@@ -457,4 +461,15 @@ func sentenceFactory(mystring string) func(before, after string) string {
 	return func (before, after string) string {
 		return fmt.Sprintf("%s %s %s", before, mystring, after)
 	}
+}
+
+
+// variadic params
+
+func learnVariadicParams(myStrings ...interface{}) {
+	for _, param := range myStrings {
+		fmt.Println("variadic param:", param)
+	}
+
+	fmt.Println("variadic params:", fmt.Sprintln(myStrings...))
 }
