@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"github.com/iower/goshapes"
 	"strconv"
+	"net/http"
+	"io/ioutil"
 )
 
 func main() {
@@ -305,6 +307,10 @@ trygoto:
 
 	// variadic params
 	learnVariadicParams("string1", "string2", "string3", "string4")
+
+
+	// web programming
+	learnWebProgramming()
 }
 
 func isEven(n int) (bool, error) {
@@ -488,4 +494,28 @@ func learnVariadicParams(myStrings ...interface{}) {
 	}
 
 	fmt.Println("variadic params:", fmt.Sprintln(myStrings...))
+}
+
+
+// web server
+
+func learnWebProgramming() {
+	go func() {
+		err := http.ListenAndServe(":8080", pair{})
+		fmt.Println(err)
+	}()
+
+	requestServer()
+}
+
+func (p pair) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello from server!"))
+}
+
+func requestServer() {
+	res, err := http.Get("http://localhost:8080")
+	fmt.Println(err)
+	defer res.Body.Close()
+	body, err := ioutil.ReadAll(res.Body)
+	fmt.Printf("\nWebserver said: `%s`", string(body))
 }
