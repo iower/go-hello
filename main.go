@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"github.com/iower/goshapes"
+	"strconv"
 )
 
 func main() {
@@ -127,6 +128,8 @@ func main() {
 			fmt.Println("File size", fs.Size())
 		}
 	}
+
+	learnErrorHandling()
 
 
 	// files
@@ -424,6 +427,19 @@ func AppendFile(fn, text string) error {
 	}
 
 	return nil
+}
+
+func learnErrorHandling() {
+	m := map[int]string{3: "three", 4: "four"}
+	if x, ok := m[1]; !ok {
+		fmt.Println("No one there")
+	} else {
+		fmt.Println(x)
+	}
+
+	if _, err := strconv.Atoi("non-int"); err != nil {
+		fmt.Println(err)
+	}
 }
 
 
