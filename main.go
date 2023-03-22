@@ -519,3 +519,10 @@ func requestServer() {
 	body, err := ioutil.ReadAll(res.Body)
 	fmt.Printf("\nWebserver said: `%s`", string(body))
 }
+
+
+// concurrency
+
+func inc(i int, c chan int) {
+	c <- i + 1
+}
