@@ -311,6 +311,10 @@ trygoto:
 
 	// web programming
 	learnWebProgramming()
+
+
+	// concurrency
+	learnConcurrency()
 }
 
 func isEven(n int) (bool, error) {
@@ -525,4 +529,31 @@ func requestServer() {
 
 func inc(i int, c chan int) {
 	c <- i + 1
+}
+
+func learnConcurrency() {
+	c := make(chan int)
+
+
+	fmt.Println("\n Run concurrency")
+	go inc(0, c)
+	go inc(10, c)
+	go inc(-805, c)
+
+	fmt.Println(<-c, <-c, <-c)
+
+	cs := make(chan string)
+	ccs := make(chan chan string)
+
+	go func() { cs <- "word" }()
+	go func() { c <- 84 }()
+
+	select {
+	case i := <-c:
+		fmt.Printf("it's a %T", i)
+	case <-cs:
+		fmt.Println("it's a string")
+	case <-ccs:
+		fmt.Println("didn't happen")
+	}
 }
